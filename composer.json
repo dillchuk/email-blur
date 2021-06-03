@@ -1,0 +1,16 @@
+{
+    "name": "wobeto/email-blur",
+    "description": "A library to e-mail blur",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fernando WObeto",
+            "email": "fernandowobeto@gmail.com"
+        }
+    ],
+    "psr-4": {
+        "Wobeto\\EmailBlur\\": "Wobeto/EmailBlur/"
+    },
+    "require": {}
+}

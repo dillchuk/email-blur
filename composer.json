@@ -3,6 +3,7 @@
     "description": "A library to e-mail blur",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Fernando WObeto",
@@ -12,7 +13,7 @@
     "scripts": {
         "test": "@php vendor/bin/phpunit tests/ --bootstrap vendor/autoload.php"
     },
-    "autoload":{
+    "autoload": {
         "psr-4": {
             "Wobeto\\EmailBlur\\": "Wobeto/EmailBlur/"
         }

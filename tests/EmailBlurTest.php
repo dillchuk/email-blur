@@ -45,4 +45,13 @@ class EmailBlurTest extends TestCase
         $this->assertEquals('exa*****@*****.com', $obscured);
     }
 
+    public function testBlurWithDomainVisible()
+    {
+        $blur = new Blur('example@test.com');
+
+        $obscured = $blur->showDomain()->make();
+
+        $this->assertEquals('exa***@test.com', $obscured);
+    }
+
 }

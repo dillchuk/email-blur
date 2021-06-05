@@ -9,6 +9,7 @@ class Blur
 
     protected string $email;
     protected int $total_mask = 3;
+    protected bool $show_domain = false;
 
     public function __construct(string $email)
     {
@@ -26,12 +27,22 @@ class Blur
         return $this;
     }
 
+    public function showDomain()
+    {
+        $this->show_domain = true;
+
+        return $this;
+    }
+
     public function make()
     {
         list($prefix, $domain) = explode('@', $this->email);
 
         $prefix = $this->maskEmailPrefix($prefix);
-        $domain = $this->maskEmailDomain($domain);
+
+        if ($this->show_domain === false) {
+            $domain = $this->maskEmailDomain($domain);
+        }
 
         return $prefix . '@' . $domain;
     }

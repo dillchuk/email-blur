@@ -9,8 +9,20 @@
             "email": "fernandowobeto@gmail.com"
         }
     ],
-    "psr-4": {
-        "Wobeto\\EmailBlur\\": "Wobeto/EmailBlur/"
+    "scripts": {
+        "test": "@php vendor/bin/phpunit tests/ --bootstrap vendor/autoload.php"
     },
-    "require": {}
+    "autoload":{
+        "psr-4": {
+            "Wobeto\\EmailBlur\\": "Wobeto/EmailBlur/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wobeto\\EmailBlur\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }

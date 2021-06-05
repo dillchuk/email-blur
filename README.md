@@ -55,4 +55,20 @@ $obscured = (new Blur('example@test.com'))
 var_dump($obscured); // exa****@****.com
 ```
 
+Use with show domain option:
+
+```php
+<?php
+
+include 'vendor/autoload.php';
+
+use Wobeto\EmailBlur\Blur;
+
+$obscured = (new Blur('example@test.com'))
+    ->showDomain()
+    ->make();
+
+var_dump($obscured); // exa***@test.com
+```
+
 Enjoy...

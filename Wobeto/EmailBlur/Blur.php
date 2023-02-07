@@ -73,7 +73,7 @@ class Blur
     protected function maskString(string $input): string
     {
         $reveal = match(strlen($input)) {
-            1 => 0,
+            0, 1 => 0,
             2, 3, 4 => 1,
             default => 3
         };

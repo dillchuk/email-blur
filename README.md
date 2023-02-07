@@ -46,12 +46,6 @@ var_dump($obscured); // exa***@gm***.com
 Handles second-level domains:
 
 ```php
-<?php
-
-include 'vendor/autoload.php';
-
-use Wobeto\EmailBlur\Blur;
-
 $blur = new Blur();
 $obscured = $blur->make('example@example.co.uk');
 var_dump($obscured); // exa***@exa***.co.uk

@@ -1,9 +1,12 @@
 # Email Blur
 
+This is version 2, derived from `wobeto/email-blur`.
+
 To install via composer, run:
 
 ```
-composer require wobeto/email-blur
+# composer require dillchuk/email-blur
+# composer install
 ```
 
 Use with default mask:
@@ -12,17 +15,35 @@ Use with default mask:
 <?php
 
 include 'vendor/autoload.php';
-
 use Wobeto\EmailBlur\Blur;
 
-$blur = new Blur('example@test.com');
-    
-$obscured = $blur->make();
-
-var_dump($obscured); // exa***@***.com
+$blur = new Blur();
+$obscured = $blur->make('example@test.com');
+var_dump($obscured); // exa***@t***.com
 ```
 
-Use with total mask changed:
+Use with mask changed:
+
+```php
+$blur = new Blur(mask: '<REDACTED>');
+$obscured = $blur->make('example@test.com');
+
+var_dump($obscured); // exa<REDACTED>@t<REDACTED>.com
+```
+
+Handles free email providers:
+
+```php
+$blur = new Blur();
+$obscured = $blur->make('example@gmail.com');
+var_dump($obscured); // exa***@gmail.com
+
+$blur = new Blur(maskFree: true);
+$obscured = $blur->make('example@gmail.com');
+var_dump($obscured); // exa***@gm***.com
+```
+
+Handles second-level domains:
 
 ```php
 <?php
@@ -31,44 +52,12 @@ include 'vendor/autoload.php';
 
 use Wobeto\EmailBlur\Blur;
 
-$blur = new Blur('example@test.com');
-$blur->setTotalMask(5);
-    
-$obscured = $blur->make();
-
-var_dump($obscured); // exa*****@*****.com
+$blur = new Blur();
+$obscured = $blur->make('example@example.co.uk');
+var_dump($obscured); // exa***@exa***.co.uk
 ```
 
-Use with chaining methods:
-
-```php
-<?php
-
-include 'vendor/autoload.php';
-
-use Wobeto\EmailBlur\Blur;
-
-$obscured = (new Blur('example@test.com'))
-    ->setTotalMask(4)
-    ->make();
-
-var_dump($obscured); // exa****@****.com
-```
-
-Use with show domain option:
-
-```php
-<?php
-
-include 'vendor/autoload.php';
-
-use Wobeto\EmailBlur\Blur;
-
-$obscured = (new Blur('example@test.com'))
-    ->showDomain()
-    ->make();
-
-var_dump($obscured); // exa***@test.com
-```
-
-Enjoy...
+See additional configuration options in the constructor.
+- `mask`
+- `maskDomain`
+- `maskFree`

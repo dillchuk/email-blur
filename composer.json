@@ -1,13 +1,17 @@
 {
-    "name": "wobeto/email-blur",
+    "name": "dillchuk/email-blur",
     "description": "A library to e-mail blur",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "authors": [
         {
             "name": "Fernando WObeto",
             "email": "fernandowobeto@gmail.com"
+        },
+        {
+            "name": "Derek Illchuk",
+            "email": "derek@illchuk.com"
         }
     ],
     "scripts": {
